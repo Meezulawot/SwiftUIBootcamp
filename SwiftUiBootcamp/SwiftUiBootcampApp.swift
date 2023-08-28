@@ -9,9 +9,25 @@ import SwiftUI
 
 @main
 struct SwiftUiBootcampApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ColorPickerBootcamp()
         }
+        .onChange(of: scenePhase, perform: { phase in
+            switch phase{
+                
+            case .background:
+                print("background Phase")
+            case .inactive:
+                print("inactive Phase")
+            case .active:
+                print("active Phase")
+            @unknown default:
+                print("default Phase")
+            }
+        })
     }
 }
