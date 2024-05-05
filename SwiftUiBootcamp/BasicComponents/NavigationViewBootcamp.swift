@@ -35,6 +35,7 @@ struct NavigationViewBootcamp: View {
                         Image(systemName: "gear")
                     })
             )
+            .navigationBarTitleDisplayMode(.inline)
             
         }
         

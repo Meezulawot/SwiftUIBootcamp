@@ -16,6 +16,7 @@ struct ActionSheetBootcamp: View {
     
     @State var showActionSheet: Bool = false
     @State var actionSheetOption: ActionSheetOptions = .othersPost
+    @State var currentAmount: CGFloat = 0.0
     
     var body: some View {
         
@@ -35,8 +36,27 @@ struct ActionSheetBootcamp: View {
             }
             .padding()
             
-            Rectangle()
-                .aspectRatio(1.0, contentMode: .fit)
+            Rectangle().frame(height: 300)
+//                .aspectRatio(1.0, contentMode: .fit)
+                .scaleEffect(1 + currentAmount)
+                .gesture(
+                    MagnificationGesture()
+                        .onChanged{ value in
+                            currentAmount = value - 1
+                        }
+                        .onEnded{value in
+                            withAnimation(.spring()){
+                                currentAmount = 0
+                            }
+                        }
+                )
+            HStack{
+                Image(systemName: "heart.fill")
+                Image(systemName: "text.bubble.fill")
+                Spacer()
+            }
+            .padding(.horizontal)
+            .padding(.top, 8)
             
         }
         .actionSheet(isPresented: $showActionSheet, content: getActionSheet)

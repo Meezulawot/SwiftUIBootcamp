@@ -14,7 +14,12 @@ struct SwiftUiBootcampApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ColorPickerBootcamp()
+            ResizableSheets()
+//            if #available(iOS 15.0, *) {
+//                FocusStateBootcamp()
+//            } else {
+//                // Fallback on earlier versions
+//            }
         }
         .onChange(of: scenePhase, perform: { phase in
             switch phase{

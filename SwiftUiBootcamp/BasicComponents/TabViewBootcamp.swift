@@ -9,7 +9,7 @@ struct TabViewBootcamp: View {
     let icons : [String] = ["globe", "house.fill", "person.fill"]
     
     var body: some View {
-        
+//        
         TabView{
             
             ForEach(icons, id: \.self, content: {icon in
